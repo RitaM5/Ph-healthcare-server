@@ -1,11 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { NextFunction, Request, Response } from "express";
 import { envVars } from "../config/env";
-
+import status from "http-status"
 
 export const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
     console.log(err);
     if (envVars.NODE_ENV === 'development') {
-        console.log("error fron global error");
+        console.log("error fron global error", err);
 
     }
     const statusCode: number = status.INTERNAL_SERVER_ERROR;

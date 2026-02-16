@@ -1,6 +1,8 @@
 import express, { Application, NextFunction, Request, Response } from "express";
 import { indexRoutes } from "./app/routes";
 import { success } from "better-auth";
+import { globalErrorHandler } from "./app/middleware/globalErrorHandler";
+import { notFound } from "./app/middleware/notFound";
 
 
 const app: Application = express();
@@ -18,5 +20,6 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 //global error handler
-app.use()
+app.use(globalErrorHandler);
+app.use(notFound);
 export default app;
